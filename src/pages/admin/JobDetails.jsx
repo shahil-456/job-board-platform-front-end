@@ -27,7 +27,7 @@ export const AdminJobDetails = () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
-                url: `/job/apply_job/${jobId}`,
+                url: `/job/verify_job/${jobId}`,
             });
             console.log("response====", response);
             // setJobDetails(response?.data?.data);

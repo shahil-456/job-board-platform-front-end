@@ -120,7 +120,7 @@ export const UserDetails = () => {
                  onClick={applyJob}
                  className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
              >
-                 { "Verify Job"}
+                 { "Verify User"}
              </button>
  
  

@@ -15,11 +15,20 @@ import { Course } from "../pages/user/Course";
 import { JobDetails } from "../pages/user/JobDetails";
 import { AdminJobDetails } from "../pages/admin/JobDetails";
 
+import { MainLogout } from "../pages/user/Logout";
+
+
 
 
 import { ErrorPage } from "../pages/shared/ErrorPage";
 import { Profile } from "../pages/user/Profile";
 import { EditProfile } from "../pages/user/EditProfile";
+
+import { EmployerProfile } from "../pages/employer/Profile";
+import { EmployerEditProfile } from "../pages/employer/EditProfile";
+
+
+
 
 import { Jobs } from "../pages/user/Jobs";
 import { Cv } from "../pages/user/UploadCv";
@@ -29,7 +38,7 @@ import { EmpLogin } from "../pages/shared/EmployerLogin";
 import { UserList } from "../pages/employer/UsersList";
 
 
-import { UserDetails } from "../pages/employer/userDetails";
+import { UserDetails } from "../pages/employer/UserDetails";
 
 import { Application } from "../pages/employer/Application";
 import { AdminLogin } from "../pages/shared/AdminLogin";
@@ -153,7 +162,7 @@ export const router = createBrowserRouter([
                     
                     {
                         path: "profile",
-                        element: <Profile />
+                        element: <EmployerProfile />
                     },
 
                     {
@@ -195,8 +204,8 @@ export const router = createBrowserRouter([
                     },
 
                     {
-                        path: "my_cv",
-                        element: <Cv />,
+                        path: "logout",
+                        element: <MainLogout />,
                     },
                     {
                         path: "orders",
@@ -211,10 +220,10 @@ export const router = createBrowserRouter([
                         path: "login",
                         element: <Login />,
                     },
-
+                    
                     {
-                        path: "payment/success",
-                        // element: <h2>Payment success</h2>,
+                        path: "edit-profile",
+                        element: <EmployerEditProfile />,
                     },
                 ],
             },

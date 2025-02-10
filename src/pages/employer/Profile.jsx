@@ -3,10 +3,10 @@ import { useFetch } from "../../hooks/useFetch";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-export const Profile = () => {
+export const EmployerProfile = () => {
   const navigate = useNavigate();
 
-    const [profileData, isLoading, error] = useFetch("/user/profile");
+    const [profileData, isLoading, error] = useFetch("/mentor/profile");
 
     const handleLogOut = async () => {
         try {
@@ -21,8 +21,9 @@ export const Profile = () => {
 
     const EditProfile = async () => {
 
+
       try {
-        navigate("/user/edit-profile");
+        navigate("/employer/edit-profile");
 
       } catch (error) {
           console.log(error);

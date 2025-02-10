@@ -23,7 +23,7 @@ export const EmployerHeader = () => {
                 <Link to={"employer/about"}>About</Link>
                 <Link to={"/employer/add-job"}>Add Job</Link>
                 <Link to={"/employer/users-list"}>Users</Link>
-                <Link to={"/employer/applications"}>Applications</Link>
+                <Link to={"/employer/application"}>Applications</Link>
 
                 <Link to={"/employer/logout"}>Logout</Link>
 

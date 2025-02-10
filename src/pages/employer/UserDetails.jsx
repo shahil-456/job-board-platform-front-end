@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 
+
 export const UserDetails = () => {
 
   const { UserId } = useParams(); 
@@ -47,7 +48,7 @@ export const UserDetails = () => {
     try {
         const response = await axiosInstance({
             method: "GET",
-            url: `/admin/verify_user/${jobId}`,
+            url: `/admin/verify_user/${UserId}`,
         });
         console.log("response====", response);
         // setJobDetails(response?.data?.data);
@@ -138,7 +139,7 @@ export const UserDetails = () => {
         onClick={verifyUser}
         className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
     >
-        Verify Job
+        Verify User
     </button>
     )}
      

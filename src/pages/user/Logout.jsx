@@ -23,3 +23,28 @@ export const Logout = () => {
 
   
 };
+
+
+
+
+export const MainLogout = () => {
+    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+
+    const logoutUser = async () => {
+        try {
+            const response = await axiosInstance.get("/mentor/logout");
+            console.log("Response:", response.data);
+            navigate("/employer/login");
+        } catch (error) {
+            console.error("Logout Error:", error.response?.data || error.message);
+        }
+    };
+    
+    React.useEffect(() => {
+        logoutUser();
+    }, []);
+
+  
+};
+
