@@ -6,6 +6,10 @@ import { AdminHome } from "../pages/admin/Home";
 
 
 import { Signup } from "../pages/shared/Signup";
+import { EmpSignup } from "../pages/shared/Signup";
+
+
+
 import { Login } from "../pages/shared/Login";
 import { Logout } from "../pages/user/Logout";
 
@@ -14,6 +18,9 @@ import { Contact } from "../pages/user/Contact";
 import { Course } from "../pages/user/Course";
 import { JobDetails } from "../pages/user/JobDetails";
 import { AdminJobDetails } from "../pages/admin/JobDetails";
+
+import { AppDetails } from "../pages/employer/AppDetails";
+
 
 import { MainLogout } from "../pages/user/Logout";
 
@@ -82,6 +89,13 @@ export const router = createBrowserRouter([
                 // element: <ProtectedRoute />,
                 path: "user",
                 children: [
+
+                    {
+                        path: "",
+                        element: <Login />,
+                    },
+
+
                     {
                         path: "whishlist",
                         // element: <h1>Wishlist</h1>,
@@ -149,6 +163,11 @@ export const router = createBrowserRouter([
                 // element: <ProtectedRoute />,
                 path: "employer",
                 children: [
+
+                    {
+                        path: "",
+                        element: <EmpLogin />,
+                    },
                     {
                         path: "user-list",
                         element: <Users />
@@ -199,6 +218,11 @@ export const router = createBrowserRouter([
                     },
 
                     {
+                        path: "appDetails/:appId",
+                        element: <AppDetails />,
+                    },
+
+                    {
                         path: "jobs",
                         element: <Jobs />,
                     },
@@ -213,7 +237,7 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "signup",
-                        element: <Signup />,
+                        element: <EmpSignup />,
                     },
 
                     {
@@ -233,6 +257,11 @@ export const router = createBrowserRouter([
                 // element: <ProtectedRoute />,
                 path: "admin",
                 children: [
+
+                    {
+                        path: "",
+                        element: <AdminLogin />,
+                    },
                     {
                         path: "user-list",
                         element: <Users />

@@ -9,7 +9,16 @@ const notify = () => toast('Here is your toast.');
 
 export const Header = () => {
 
-const navigate = useNavigate()
+const navigate = useNavigate();
+
+
+const handleNavigation = () => {
+    // Get the current base path (e.g., /user)
+    const basePath = window.location.pathname;
+
+    // Append 'signup' to the base path
+    navigate(`${basePath}signup`);
+  };
 
     return (
         
@@ -29,7 +38,7 @@ const navigate = useNavigate()
                             {" "}
                             <li>About</li>{" "}
                         </Link>
-                        <Link to={"user/jobs"}>
+                        <Link to={"/jobs"}>
                             {" "}
                             <li>Jobs</li>{" "}
                         </Link>
@@ -39,8 +48,10 @@ const navigate = useNavigate()
                     {/* <DarkMode /> */}
 
 
-                    <button className="btn btn-primary" onClick={()=>navigate('/signup')} >Join Us</button>
-
+                    <button className="btn btn-primary" onClick={handleNavigation}>
+                        
+                                                Signup
+                        </button>
 
                 </div>
             </div>
