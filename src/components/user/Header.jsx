@@ -2,17 +2,24 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { DarkMode } from "../shared/DarkMode";
 
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast('Here is your toast.');
+
+
 export const Header = () => {
 
 const navigate = useNavigate()
 
     return (
+        
         <div className="flex justify-between items-center p-14 h-20 shadow-2xl ">
             <div>
                 <h1 className="text-3xl font-bold">Logo</h1>
             </div>
             <div className="flex justify-center items-center gap-16">
                 <nav>
+               
                     <ul className="flex justify-center items-center gap-10 text-md">
                         <Link to={"/"}>
                             {" "}

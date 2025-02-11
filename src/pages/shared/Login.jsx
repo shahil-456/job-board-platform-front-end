@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
+import toast from 'react-hot-toast';
+
+
 export const Login = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
@@ -13,12 +16,12 @@ export const Login = () => {
             console.log("Response:", response.data);
 
             const userRole = 'user'; 
-
-            
-
+            toast.success('User Login Success');
             navigate("/user/profile");
         } catch (error) {
             console.error("Login Error:", error.response?.data || error.message);
+            toast.error('Wrong E-mail or Password');
+
         }
     };
     

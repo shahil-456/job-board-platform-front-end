@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { DarkMode } from "../shared/DarkMode";
 
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export const UserHeader = () => {
 
   const [profileData, isLoading, error] = useFetch("/user/profile");
+    const notify = () => toast('Here is your toast.');
 
 
     return (
@@ -19,6 +21,10 @@ export const UserHeader = () => {
                 <div className="text-3xl font-bold">Logo</div>
             </Link>
             <nav className="flex gap-16 items-center font-semibold">
+
+
+            {/* <button onClick={notify}>toast</button>
+            <Toaster /> */}
                 <Link to={"/"}>Home</Link>
                 <Link to={"/about"}>About</Link>
                 <Link to={"/user/jobs"}>Jobs</Link>
