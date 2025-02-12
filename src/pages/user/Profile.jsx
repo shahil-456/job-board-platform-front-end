@@ -32,8 +32,9 @@ export const Profile = () => {
 
     return (
       
-      <div className="flex flex-col items-center justify-start px-20 py-16">
-           
+<div className="flex flex-col items-center justify-start px-20 py-16">
+<div className="border-2 border-white rounded-lg p-8 shadow-lg ">
+
             <section>
                 <h1>{profileData?.name}</h1>
                 <img src={profileData?.profilePic} className="w-40 h-40" alt="profileImage" />
@@ -46,5 +47,15 @@ export const Profile = () => {
                 {/* <button className="btn btn-accent" onClick={handleLogOut}>Logout</button> */}
             </section>
         </div>
+
+        </div>
+
+
+
+
+
+
+
+
     );
 };

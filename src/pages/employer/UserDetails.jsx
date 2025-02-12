@@ -135,13 +135,20 @@ export const UserDetails = () => {
 
 
       {isAdminAuth && (
-    <button
-        onClick={verifyUser}
+  <div>
+    {profileData?.isVerified ? (
+      <p className="text-green-500 font-semibold">Verified</p>
+    ) : (
+      <button
+        onClick={verifyJob}
         className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
-    >
-        Verify User
-    </button>
+      >
+        {"Verify User"}
+      </button>
     )}
+  </div>
+)}
+
      
 
     </div>

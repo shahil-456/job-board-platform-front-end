@@ -90,6 +90,7 @@ export const EmpSignup = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
 
+
     const onSubmit = async (data) => {
         try {
             const response = await axiosInstance({
@@ -98,6 +99,8 @@ export const EmpSignup = () => {
                 data: data,
             });
             console.log("response====", response);
+            toast.success('Employer Signup Success');
+
             navigate("/employer");
         } catch (error) {
             console.log(error);

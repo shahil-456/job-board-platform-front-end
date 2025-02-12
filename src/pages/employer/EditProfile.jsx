@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
 
 export const EmployerEditProfile = () => {
-  const [profileData, isLoading, error] = useFetch("/user/profile");
+  const [profileData, isLoading, error] = useFetch("/mentor/profile");
   
   // States to manage the form inputs
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ export const EmployerEditProfile = () => {
     e.preventDefault();
     try {
       // Use the API endpoint to update the profile data
-      const response = await axiosInstance.post("/user/update_profile", formData);
+      const response = await axiosInstance.post("/mentor/update_profile", formData);
       console.log("Profile updated successfully", response.data);
     } catch (error) {
       console.log("Error updating profile:", error);

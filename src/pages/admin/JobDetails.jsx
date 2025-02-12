@@ -90,15 +90,19 @@ export const AdminJobDetails = () => {
 
     {/* Apply Job Button */}
     <div className="flex justify-center mt-6">
-     
+    {
+        JobDetails?.isVerified ? (
+          <p className="text-green-500 font-semibold">Verified</p>
+        ) : (
+          <button
+            onClick={verifyJob}
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
+          >
+            {"Verify Job"}
+          </button>
+        )
+      }
 
-
-    <button
-                onClick={verifyJob}
-                className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
-            >
-                { "Verify Job"}
-            </button>
 
 
     </div>

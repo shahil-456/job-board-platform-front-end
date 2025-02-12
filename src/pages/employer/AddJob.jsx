@@ -3,6 +3,8 @@ import { CourseCards } from "../../components/user/Cards";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
+import toast from 'react-hot-toast';
+
 
 
 export const AddJob = () => {
@@ -35,22 +37,24 @@ export const AddJob = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prevData) => ({
-          ...prevData,
-          image: reader.result
-        }));
-      };
-      reader.readAsDataURL(file);
+      setFormData((prevData) => ({
+        ...prevData,
+        image: file, // Store the file object instead of the data URL
+      }));
     }
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // Use the API endpoint to update the profile data
-      const response = await axiosInstance.post("/job/create", formData);
+      const response = await axiosInstance.post("/job/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Important for file uploads
+        },
+      });
+            toast.success('Job Created Success');
+
       console.log("Job Added successfully", response.data);
     } catch (error) {
       console.log("Error Adding JOb:", error);
@@ -67,12 +71,6 @@ export const AddJob = () => {
         <form onSubmit={handleSubmit} className="border p-6 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">Add Job</h1>
 
-          {/* Profile Image */}
-         
-
-          {/* Name */}
-
-       
 
           <div className="mb-4">
   <label className="block text-sm font-medium ">Title</label>

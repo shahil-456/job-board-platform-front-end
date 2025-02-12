@@ -4,19 +4,20 @@ import { axiosInstance } from "../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFetch } from "../../hooks/useFetch";
-
-
-
+import { useSelector, useDispatch } from "react-redux";
 
 
 export const JobDetails = () => {
     const { jobId } = useParams();
     const navigate = useNavigate();
 
+    const { isUserAuth,userData } = useSelector((state) => state.user);
 
     console.log("params===", jobId);
 
     const [JobDetails, setJobDetails] = useState({});
+    const [appDetails, applyData] = useState({});
+
 
     const handleApply = () => {
         fetchData(`/job/apply_job/${jobId}`, "GET");
@@ -50,8 +51,24 @@ export const JobDetails = () => {
         }
     };
 
+
+    const fetchApp = async () => {
+      try {
+          const response = await axiosInstance({
+              method: "GET",
+              url: `/job/get_job_apply/${jobId}`,
+          });
+          console.log("response====", response);
+          applyData(response?.data?.data);
+      } catch (error) {
+          console.log(error);
+      }
+  };
+
     useEffect(() => {
         fetchCourses();
+        fetchApp();
+
     }, []);
 
     return (
@@ -90,13 +107,19 @@ export const JobDetails = () => {
 
     {/* Apply Job Button */}
     <div className="flex justify-center mt-6">
-     
+
+    {isUserAuth ? (
+  !appDetails.jobID ? (
     <button
-                onClick={applyJob}
-                className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
-            >
-                { "Apply Now"}
-            </button>
+      onClick={applyJob}
+      className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
+    >
+      Apply Now
+    </button>
+  ) : (
+    <p className="text-green-500">You have already applied.</p>
+  )
+) : null}
 
 
     </div>
