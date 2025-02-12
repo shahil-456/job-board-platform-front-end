@@ -37,7 +37,7 @@ import { EmployerEditProfile } from "../pages/employer/EditProfile";
 
 
 
-import { Jobs } from "../pages/user/Jobs";
+import { Jobs ,AdminJobs} from "../pages/user/Jobs";
 import { Cv } from "../pages/user/UploadCv";
 import { AddJob } from "../pages/employer/AddJob";
 import { Users } from "../pages/employer/Users";
@@ -72,8 +72,8 @@ export const router = createBrowserRouter([
                 element: <Login />,
             },
             {
-                path: "about",
-                element: <About />,
+                path: "jobs",
+                element: <Jobs />,
             },
             {
                 path: "contact",
@@ -278,6 +278,13 @@ export const router = createBrowserRouter([
                         element: <Profile />
                     },
 
+
+                     
+                    {
+                        path: "logout",
+                        element: <MainLogout />
+                    },
+
                     {
                         path: "applications",
                         element: <Application />
@@ -313,7 +320,7 @@ export const router = createBrowserRouter([
 
                     {
                         path: "jobs",
-                        element: <Jobs />,
+                        element: <AdminJobs />,
                     },
 
                     {

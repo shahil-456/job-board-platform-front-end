@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
+
 
 export const EmpLogin = () => {
     const { register, handleSubmit } = useForm();
@@ -11,8 +13,12 @@ export const EmpLogin = () => {
         try {
             const response = await axiosInstance.put("/mentor/login", data);
             console.log("Response:", response.data);
+            toast.success('Employer Login Success');
+
             navigate("/employer/profile");
         } catch (error) {
+            toast.error('Wrong E-mail or Password');
+
             console.error("Login Error:", error.response?.data || error.message);
         }
     };

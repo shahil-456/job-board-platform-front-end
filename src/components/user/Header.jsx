@@ -15,9 +15,14 @@ const navigate = useNavigate();
 const handleNavigation = () => {
     // Get the current base path (e.g., /user)
     const basePath = window.location.pathname;
-
     // Append 'signup' to the base path
     navigate(`${basePath}signup`);
+  };
+
+
+  const handleClick = () => {
+    // Navigating to the "/user/signup" route
+    navigate('/user/signup');
   };
 
     return (
@@ -30,17 +35,17 @@ const handleNavigation = () => {
                 <nav>
                
                     <ul className="flex justify-center items-center gap-10 text-md">
-                        <Link to={"/"}>
+                        <Link to={"user/"}>
                             {" "}
-                            <li>Home</li>{" "}
+                            <li>User</li>{" "}
                         </Link>
-                        <Link to={"/about"}>
+                        <Link to={"/employer"}>
                             {" "}
-                            <li>About</li>{" "}
+                            <li>Employer</li>{" "}
                         </Link>
                         <Link to={"/jobs"}>
                             {" "}
-                            <li>Jobs</li>{" "}
+                            <li>Home</li>{" "}
                         </Link>
                     </ul>
                 </nav>
@@ -48,10 +53,10 @@ const handleNavigation = () => {
                     {/* <DarkMode /> */}
 
 
-                    <button className="btn btn-primary" onClick={handleNavigation}>
-                        
-                                                Signup
-                        </button>
+          
+    <button className="btn btn-primary" onClick={handleClick}>
+      Signup
+    </button>
 
                 </div>
             </div>

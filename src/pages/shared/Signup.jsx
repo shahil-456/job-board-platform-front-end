@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
+
 
 export const Signup = () => {
     const { register, handleSubmit } = useForm();
@@ -15,6 +17,8 @@ export const Signup = () => {
                 data: data,
             });
             console.log("response====", response);
+            toast.success('User Signup Success');
+
             navigate("/user/profile");
         } catch (error) {
             console.log(error);
