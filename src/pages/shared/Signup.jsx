@@ -94,7 +94,7 @@ export const EmpSignup = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosInstance({
-                method: "POST",
+                method: "PUT",
                 url: "/mentor/signup",
                 data: data,
             });
