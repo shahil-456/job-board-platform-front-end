@@ -42,7 +42,7 @@ export const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Username</span>
                             </label>
-                            <input type="username" placeholder="username" {...register("username")} className="input input-bordered" required />
+                            <input type="username" placeholder="username" {...register("name")} className="input input-bordered" required />
                         </div>
                         
                         <div className="form-control">
@@ -56,7 +56,7 @@ export const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Mobile</span>
                             </label>
-                            <input type="number" placeholder="phone" {...register("phone")} className="input input-bordered" required />
+                            <input type="number" placeholder="phone" {...register("mobile")} className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
@@ -94,7 +94,7 @@ export const EmpSignup = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosInstance({
-                method: "PUT",
+                method: "POST",
                 url: "/mentor/signup",
                 data: data,
             });
