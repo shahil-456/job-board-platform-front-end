@@ -12,7 +12,7 @@ export const Signup = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosInstance({
-                method: "PUT",
+                method: "POST",
                 url: "/user/signup",
                 data: data,
             });
@@ -94,7 +94,7 @@ export const EmpSignup = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosInstance({
-                method: "PUT",
+                method: "POST",
                 url: "/mentor/signup",
                 data: data,
             });
