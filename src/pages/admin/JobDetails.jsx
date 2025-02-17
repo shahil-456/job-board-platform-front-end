@@ -23,6 +23,16 @@ export const AdminJobDetails = () => {
 
     };
 
+
+    const [isApplied, setIsApplied] = useState(false);
+
+    const handleApplyClick = async () => {
+        if (isUserAuth && !appDetails.jobID) {
+          await applyJob(); // backend
+          setIsApplied(true); //
+        }
+      };
+
     const verifyJob = async () => {
         try {
             const response = await axiosInstance({
@@ -77,6 +87,12 @@ export const AdminJobDetails = () => {
 
       <p className="text-md font-semibold ">{JobDetails?.details}</p>
 
+
+      <div className="mt-4">
+        <p className="text-lg font-semibold ">Employer:</p>
+        <p className="text-gray-600">{JobDetails?.mentorName}</p>
+      </div>
+
       <div className="mt-4">
         <p className="text-lg font-semibold ">Company:</p>
         <p className="text-gray-600">{JobDetails?.company}</p>
@@ -91,15 +107,15 @@ export const AdminJobDetails = () => {
     {/* Apply Job Button */}
     <div className="flex justify-center mt-6">
     {
-        JobDetails?.isVerified ? (
+        JobDetails?.isVerified  ? (
           <p className="text-green-500 font-semibold">Verified</p>
         ) : (
           <button
             onClick={verifyJob}
             className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
           >
-            {"Verify Job"}
-          </button>
+            {isApplied ? 'Verified' : 'Verify'}
+            </button>
         )
       }
 

@@ -10,16 +10,16 @@ import { useFetch } from "../../hooks/useFetch";
 
 
 export const AppDetails = () => {
-    const { jobId } = useParams();
+    const { appId } = useParams();
     const navigate = useNavigate();
 
 
-    console.log("params===", jobId);
+    console.log("params===", appId);
 
     const [JobDetails, setJobDetails] = useState({});
 
     const handleApply = () => {
-        fetchData(`/job/apply_job/${jobId}`, "GET");
+        fetchData(`/job/apply_job/${appId}`, "GET");
 
     };
 
@@ -27,7 +27,7 @@ export const AppDetails = () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
-                url: `/job/apply_job/${jobId}`,
+                url: `/job/apply_job/${appId}`,
             });
             console.log("response====", response);
             // setJobDetails(response?.data?.data);
@@ -37,11 +37,11 @@ export const AppDetails = () => {
     };
 
 
-    const fetchCourses = async () => {
+    const fetchApps = async () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
-                url: `/job/get_job_details/${jobId}`,
+                url: `/job/get-App/${appId}`,
             });
             console.log("response====", response);
             setJobDetails(response?.data?.data);
@@ -51,7 +51,7 @@ export const AppDetails = () => {
     };
 
     useEffect(() => {
-        fetchCourses();
+      fetchApps();
     }, []);
 
     return (
@@ -60,33 +60,34 @@ export const AppDetails = () => {
     <div className="flex justify-center items-center min-h-screen">
   <div className=" p-6 rounded-lg shadow-md w-full max-w-2xl">
     {/* Job Details Header */}
-    <h2 className="text-2xl font-bold text-center mb-4">Job Details</h2>
+    <h2 className="text-2xl font-bold text-center mb-4">Application Details</h2>
 
     {/* Job Image */}
     <div className="flex justify-center">
-      <img
-        src={JobDetails?.image}
-        alt="Job"
-        className="w-full h-60 object-cover rounded-lg mb-4"
-      />
-    </div>
+  <img
+    src={JobDetails?.jobData?.image || 'fallback-image-url'} // Handle the case when image is missing
+    alt="Job"
+    className="w-full h-60 object-cover rounded-lg mb-4"
+  />
+</div>
 
-    {/* Job Information */}
-    <div className="space-y-3">
-      <h2 className="text-3xl font-bold ">{JobDetails?.title}</h2>
+{/* Job Information */}
+<div className="space-y-3">
+  <h2 className="text-3xl font-bold">{JobDetails?.jobData?.title}</h2>
 
-      <p className="text-md font-semibold ">{JobDetails?.details}</p>
+  <p className="text-md font-semibold ">{JobDetails?.jobData?.details}</p>
 
-      <div className="mt-4">
-        <p className="text-lg font-semibold ">Company:</p>
-        <p className="text-gray-600">{JobDetails?.company}</p>
-      </div>
+  <div className="mt-4">
+    <p className="text-lg font-semibold">Company:</p>
+    <p className="text-gray-600">{JobDetails?.jobData?.company}</p>
+  </div>
 
-      <div className="mt-2">
-        <p className="text-lg font-semibold ">Skills Required:</p>
-        <p className="text-gray-600">{JobDetails?.skills}</p>
-      </div>
-    </div>
+  <div className="mt-2">
+    <p className="text-lg font-semibold">Skills Required:</p>
+    <p className="text-gray-600">{JobDetails?.jobData?.skills}</p>
+  </div>
+</div>
+
 
     {/* Apply Job Button */}
     <div className="flex justify-center mt-6">

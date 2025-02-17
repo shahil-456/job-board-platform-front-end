@@ -6,8 +6,16 @@ import { CourseSkelton } from "../../components/shared/Skeltons";
 import { Link } from "react-router-dom";
 
 
+
 export const Users = () => {
-    const [userList, isLoading, error] = useFetch("/mentor/get_users");
+
+    const { isAdminAuth,adminData } = useSelector((state) => state.admin);
+
+    const apiEndpoint = isAdminAuth ? "/admin/get_users" : "/mentor/get_users";
+    const [userList, isLoading, error] = useFetch(apiEndpoint);
+
+
+
 
     return (
         <div className="flex flex-col items-center justify-start px-20 py-16">

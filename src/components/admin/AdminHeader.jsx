@@ -20,7 +20,7 @@ export const AdminHeader = () => {
             </Link>
             <nav className="flex gap-16 items-center font-semibold">
                 <Link to={"/"}>Home</Link>
-                <Link to={"/about"}>About</Link>
+                <Link to={"admin/about"}>About</Link>
                 <Link to={"/admin/jobs"}>Jobs</Link>
                 <Link to={"/admin/users-list"}>Users</Link>
                 <Link to={"/admin/applications"}>Applications</Link>

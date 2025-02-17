@@ -119,7 +119,7 @@ export const UserDetails = () => {
 
 
              {
-        profileData?.isVerified ? (
+        profileData?.isVerified ? (qq
           <p className="text-green-500 font-semibold">Verified</p>
         ) : (
           <button
@@ -134,10 +134,6 @@ export const UserDetails = () => {
 
 
 
-
-
-
- 
  
      </div>
 

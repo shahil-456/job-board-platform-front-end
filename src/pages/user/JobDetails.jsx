@@ -24,6 +24,16 @@ export const JobDetails = () => {
 
     };
 
+
+    const [isApplied, setIsApplied] = useState(false);
+
+    const handleApplyClick = async () => {
+      if (isUserAuth && !appDetails.jobID) {
+        await applyJob(); // Assume applyJob sends the application to the backend
+        setIsApplied(true); // Update state to indicate job is applied
+      }
+    };
+
     const applyJob = async () => {
         try {
             const response = await axiosInstance({
@@ -109,17 +119,17 @@ export const JobDetails = () => {
     <div className="flex justify-center mt-6">
 
     {isUserAuth ? (
-  !appDetails.jobID ? (
-    <button
-      onClick={applyJob}
-      className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
-    >
-      Apply Now
-    </button>
-  ) : (
-    <p className="text-green-500">You have already applied.</p>
-  )
-) : null}
+        !appDetails.jobID ? (
+          <button
+            onClick={handleApplyClick}
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
+          >
+            {isApplied ? 'Applied' : 'Apply Now'}
+          </button>
+        ) : (
+          <p className="text-green-500">You have already applied.</p>
+        )
+      ) : null}
 
 
     </div>

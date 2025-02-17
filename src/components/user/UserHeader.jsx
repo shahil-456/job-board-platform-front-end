@@ -26,7 +26,7 @@ export const UserHeader = () => {
             {/* <button onClick={notify}>toast</button>
             <Toaster /> */}
                 <Link to={"/"}>Home</Link>
-                <Link to={"/about"}>About</Link>
+                <Link to={"/user/profile"}>Profile</Link>
                 <Link to={"/user/jobs"}>Jobs</Link>
                 <Link to={"/user/my_cv"}>My CV</Link>
                 <Link to={"/user/logout"}>Logout</Link>

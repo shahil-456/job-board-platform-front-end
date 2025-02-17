@@ -3,6 +3,8 @@ import { CourseCards } from "../../components/user/Cards";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
+import toast from 'react-hot-toast';
+
 
 
 export const Cv = () => {
@@ -55,6 +57,8 @@ export const Cv = () => {
     try {
       // Use the API endpoint to update the profile data
       const response = await axiosInstance.post("/user/update_profile", formData);
+      toast.success('CV Upload Success');
+
       console.log("Profile updated successfully", response.data);
     } catch (error) {
       console.log("Error updating profile:", error);

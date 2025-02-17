@@ -3,10 +3,17 @@ import { UserCards } from "../../components/user/Cards";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
+import { useSelector, useDispatch } from "react-redux";
 
 export const UserList = () => {
     const [search, setSearch] = useState("");
-    const [userList, isLoading, error] = useFetch("/mentor/get_users");
+
+
+    const { isAdminAuth,adminData } = useSelector((state) => state.admin);
+
+    const apiEndpoint = isAdminAuth ? "/admin/get_users" : "/mentor/get_users";
+    const [userList, isLoading, error] = useFetch(apiEndpoint);
+
 
     const filteredUsers = userList?.filter(user => 
         user.name.toLowerCase().includes(search.toLowerCase())

@@ -9,11 +9,20 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 
+
 export const UserDetails = () => {
 
   const { UserId } = useParams(); 
-  const [profileData, isLoading, error] = useFetch(`/mentor/user_details/${UserId}`);
+
   const { isAdminAuth,adminData } = useSelector((state) => state.admin);
+  const { isEmployerAuth,EmployerData } = useSelector((state) => state.employer);
+
+
+  const apiEndpoint = isEmployerAuth ? "/mentor/user_details/"+UserId : "/admin/user_details/"+UserId;
+  const [profileData, isLoading, error] = useFetch(apiEndpoint);
+
+  const dispatch = useDispatch()
+
 
   // States to manage the form inputs
   const [formData, setFormData] = useState({
@@ -140,7 +149,7 @@ export const UserDetails = () => {
       <p className="text-green-500 font-semibold">Verified</p>
     ) : (
       <button
-        onClick={verifyJob}
+        onClick={verifyUser}
         className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
       >
         {"Verify User"}

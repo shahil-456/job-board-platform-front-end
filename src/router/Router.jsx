@@ -274,7 +274,7 @@ export const router = createBrowserRouter([
 
                     
                     {
-                        path: "profile",
+                        path: "about",
                         element: <Profile />
                     },
 
@@ -304,8 +304,8 @@ export const router = createBrowserRouter([
 
 
                     {
-                        path: "home",
-                        element: <AdminHome />
+                        path: "appDetails/:appId",
+                        element: <AppDetails />
                     },
 
                     {
