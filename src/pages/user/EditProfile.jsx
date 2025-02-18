@@ -3,6 +3,7 @@ import { CourseCards } from "../../components/user/Cards";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
+import toast from 'react-hot-toast';
 
 export const EditProfile = () => {
   const [profileData, isLoading, error] = useFetch("/user/profile");
@@ -38,22 +39,23 @@ export const EditProfile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prevData) => ({
-          ...prevData,
-          profilePic: reader.result
-        }));
-      };
-      reader.readAsDataURL(file);
+      setFormData((prevData) => ({
+        ...prevData,
+        profilePic: file, 
+      }));
     }
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // Use the API endpoint to update the profile data
-      const response = await axiosInstance.post("/user/update_profile", formData);
+      const response = await axiosInstance.post("/user/update_profile", formData,{headers: {
+        "Content-Type": "multipart/form-data", 
+      }});
+      toast.success('Profile updated successfully');
+
       console.log("Profile updated successfully", response.data);
     } catch (error) {
       console.log("Error updating profile:", error);
@@ -79,6 +81,8 @@ export const EditProfile = () => {
             />
             <input
               type="file"
+              name="image"
+
               onChange={handleImageChange}
               className="block w-full text-sm text-gray-500"
             />

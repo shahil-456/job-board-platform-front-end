@@ -38,17 +38,27 @@ export const Cv = () => {
     }));
   };
 
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setFormData((prevData) => ({
+  //         ...prevData,
+  //         cv: reader.result
+  //       }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prevData) => ({
-          ...prevData,
-          cv: reader.result
-        }));
-      };
-      reader.readAsDataURL(file);
+      setFormData((prevData) => ({
+        ...prevData,
+        cv: file, // Store the file object instead of the data URL
+      }));
     }
   };
 
@@ -56,7 +66,11 @@ export const Cv = () => {
     e.preventDefault();
     try {
       // Use the API endpoint to update the profile data
-      const response = await axiosInstance.post("/user/update_profile", formData);
+      const response = await axiosInstance.post("/user/upload_cv", formData, {headers: {
+        "Content-Type": "multipart/form-data", 
+      }});
+
+      
       toast.success('CV Upload Success');
 
       console.log("Profile updated successfully", response.data);
@@ -67,11 +81,7 @@ export const Cv = () => {
 
   return (
     <div className="flex flex-col items-center justify-start px-20 py-16">
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p className="text-red-500">Error loading CV</p>
-      ) : (
+      {  (
         <form onSubmit={handleSubmit} className="border p-6 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">My CV</h1>
 
@@ -84,6 +94,8 @@ export const Cv = () => {
             />
             <input
               type="file"
+              name="cv"
+
               onChange={handleImageChange}
               className="block w-full text-sm text-gray-500"
             />
@@ -94,7 +106,7 @@ export const Cv = () => {
             <label className="block text-sm font-medium ">Skills</label>
             <input
               type="text"
-              name="name"
+              name="skill"
               value={formData.skill}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
