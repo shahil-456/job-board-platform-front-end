@@ -16,7 +16,7 @@ export const AdminLogin = () => {
             console.log("Response:", response.data); 
             toast.success('Admin Login Success');
 
-            navigate("/admin/home");
+            navigate("/admin/jobs");
         } catch (error) {
             toast.error('Wrong E-mail or Password');
 
