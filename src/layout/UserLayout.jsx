@@ -16,14 +16,12 @@ import { clearEmployer, saveEmployer } from "../redux/features/employerSlice";
 
 
 export const UserLayout = () => {
-    const { isUserAuth,userData } = useSelector((state) => state.user);
-    const { isAdminAuth,adminData } = useSelector((state) => state.admin);
-    const { isEmployerAuth,employerData } = useSelector((state) => state.employer);
+    const { isUserAuth, userData } = useSelector((state) => state.user);
+    const { isAdminAuth, adminData } = useSelector((state) => state.admin);
+    const { isEmployerAuth, employerData } = useSelector((state) => state.employer);
 
-    const dispatch = useDispatch()
-    const location = useLocation()
-
-    console.log("isUserAuth====", isUserAuth);
+    const dispatch = useDispatch();
+    const location = useLocation();
 
     const checkUser = async () => {
         try {
@@ -31,27 +29,25 @@ export const UserLayout = () => {
                 method: "GET",
                 url: "/user/check-user",
             });
-            dispatch(saveUser())
+            dispatch(saveUser(response.data));  // Save response data
         } catch (error) {
-            dispatch(clearUser())
+            dispatch(clearUser());
             console.log(error);
         }
     };
 
-
-      const checkAdmin = async () => {
+    const checkAdmin = async () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
                 url: "/admin/check-admin",
             });
-            dispatch(saveAdmin())
+            dispatch(saveAdmin(response.data));  // Save response data
         } catch (error) {
-            dispatch(clearUser())
+            dispatch(clearAdmin());  // Fix: clearAdmin
             console.log(error);
         }
     };
-
 
     const checkEmployer = async () => {
         try {
@@ -59,31 +55,40 @@ export const UserLayout = () => {
                 method: "GET",
                 url: "/mentor/check-employer",
             });
-            dispatch(saveEmployer())
+            dispatch(saveEmployer(response.data));  // Save response data
         } catch (error) {
-            dispatch(clearEmployer())
+            dispatch(clearEmployer());  // Fix: clearEmployer
             console.log(error);
         }
     };
 
 
-    useEffect(() => {
-        checkUser();
-        checkAdmin();
-        checkEmployer();
+        useEffect(() => {
+        if (!isUserAuth) {
+            checkUser();
+        
+            if (!isEmployerAuth) {
+                checkEmployer();
+            if (!isAdminAuth) {
+                checkAdmin();
+            }
 
-
-    }, [location.pathname]);
+        }
+           
+        }
+    }, [location.pathname, isUserAuth, isAdminAuth, isEmployerAuth]);
+    
+    
+    
 
     return (
         <div>
             {isUserAuth ? <UserHeader /> : isAdminAuth ? <AdminHeader /> : isEmployerAuth ? <EmployerHeader /> : <Header />}
-
             <div className="min-h-96">
                 <Outlet />
             </div>
-
             <Footer />
         </div>
     );
 };
+
