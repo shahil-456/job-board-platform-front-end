@@ -66,18 +66,14 @@ export const UserLayout = () => {
         useEffect(() => {
         if (!isUserAuth) {
             checkUser();
-        
-            if (!isEmployerAuth) {
-                checkEmployer();
-            if (!isAdminAuth) {
-                checkAdmin();
-            }
-
         }
-           
+        if (!isAdminAuth) {
+            checkAdmin();
+        }
+        if (!isEmployerAuth) {
+            checkEmployer();
         }
     }, [location.pathname, isUserAuth, isAdminAuth, isEmployerAuth]);
-    
     
     
 
