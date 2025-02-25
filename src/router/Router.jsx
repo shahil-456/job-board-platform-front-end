@@ -4,11 +4,13 @@ import { Home } from "../pages/user/Home";
 import { AdminHome } from "../pages/admin/Home";
 
 
+import { EmployerLayout } from "../layout/EmployerLayout";
+import { AdminLayout } from "../layout/AdminLayout";
 
 import { Signup } from "../pages/shared/Signup";
 import { EmpSignup } from "../pages/shared/Signup";
 
-
+import { ProtectedRoute } from "./ProtectedRoute";
 
 import { Login } from "../pages/shared/Login";
 import { Logout } from "../pages/user/Logout";
@@ -51,8 +53,6 @@ import { Application } from "../pages/employer/Application";
 import { AdminLogin } from "../pages/shared/AdminLogin";
 
 
-
-
 export const router = createBrowserRouter([
     {
         path: "",
@@ -75,19 +75,14 @@ export const router = createBrowserRouter([
                 path: "jobs",
                 element: <Jobs />,
             },
-            {
-                path: "contact",
-                element: <Contact />,
-            },
-            {
-                path: "courses",
-                element: <Course />,
-            },
             
-           
+            
+            
             {
                 // element: <ProtectedRoute />,
                 path: "user",
+                // element: <UserLayout />,
+
                 children: [
 
                     {
@@ -157,197 +152,210 @@ export const router = createBrowserRouter([
                     },
                 ],
             },
+            
 
+            
+        ],
+    },
+
+
+    {
+        // element: <ProtectedRoute />,
+        path: "employer",
+        element: <EmployerLayout />,
+
+        children: [
 
             {
-                // element: <ProtectedRoute />,
-                path: "employer",
-                children: [
-
-                    {
-                        path: "",
-                        element: <EmpLogin />,
-                    },
-                    {
-                        path: "user-list",
-                        element: <Users />
-                    },
-                    {
-                        path: "login",
-                        element: <EmpLogin />
-                    },
+                path: "",
+                element: <EmpLogin />,
+            },
+            {
+                path: "user-list",
+                element: <Users />
+            },
+            {
+                path: "login",
+                element: <EmpLogin />
+            },
 
 
-                    
-                    {
-                        path: "profile",
-                        element: <EmployerProfile />
-                    },
+            
+            {
+                path: "profile",
+                element: <EmployerProfile />
+            },
 
-                    {
-                        path: "application",
-                        element: <Application />
-                    },
-
-
-                    {
-                        path: "userDetails/:UserId",
-                        element: <UserDetails />
-                    },
-
-
-                    {
-                        path: "users-List",
-                        element: <UserList />
-                    },
-
-
-                    {
-                        path: "add-job",
-                        element: <AddJob />
-                    },
-
-                    {
-                        path: "courses",
-                        element: <Course />,
-                    },
-
-                    {
-                        path: "jobDetails/:jobId",
-                        element: <JobDetails />,
-                    },
-
-                    {
-                        path: "appDetails/:appId",
-                        element: <AppDetails />,
-                    },
-
-                    {
-                        path: "jobs",
-                        element: <Jobs />,
-                    },
-
-                    {
-                        path: "logout",
-                        element: <MainLogout />,
-                    },
-                    {
-                        path: "orders",
-                        // element: <h1> orders page</h1>,
-                    },
-                    {
-                        path: "signup",
-                        element: <EmpSignup />,
-                    },
-
-                    {
-                        path: "login",
-                        element: <Login />,
-                    },
-                    
-                    {
-                        path: "edit-profile",
-                        element: <EmployerEditProfile />,
-                    },
-                ],
+            {
+                path: "application",
+                element: <Application />
             },
 
 
             {
-                // element: <ProtectedRoute />,
-                path: "admin",
-                children: [
-
-                    {
-                        path: "",
-                        element: <AdminLogin />,
-                    },
-                    {
-                        path: "user-list",
-                        element: <Users />
-                    },
-                    {
-                        path: "login",
-                        element: <AdminLogin />
-                    },
+                path: "userDetails/:UserId",
+                element: <UserDetails />
+            },
 
 
-                    
-                    {
-                        path: "about",
-                        element: <Profile />
-                    },
+            {
+                path: "users-List",
+                element: <UserList />
+            },
 
 
-                     
-                    {
-                        path: "logout",
-                        element: <MainLogout />
-                    },
+            {
+                path: "add-job",
+                element: <AddJob />
+            },
 
-                    {
-                        path: "applications",
-                        element: <Application />
-                    },
+            {
+                path: "courses",
+                element: <Course />,
+            },
 
+            {
+                path: "jobDetails/:jobId",
+                element: <JobDetails />,
+            },
 
-                    {
-                        path: "userDetails/:UserId",
-                        element: <UserDetails />
-                    },
+            {
+                path: "appDetails/:appId",
+                element: <AppDetails />,
+            },
 
+            {
+                path: "jobs",
+                element: <Jobs />,
+            },
 
-                    {
-                        path: "users-List",
-                        element: <UserList />
-                    },
+            {
+                path: "logout",
+                element: <MainLogout />,
+            },
+            {
+                path: "orders",
+                // element: <h1> orders page</h1>,
+            },
+            {
+                path: "signup",
+                element: <EmpSignup />,
+            },
 
-
-                    {
-                        path: "appDetails/:appId",
-                        element: <AppDetails />
-                    },
-
-                    {
-                        path: "courses",
-                        element: <Course />,
-                    },
-
-                    {
-                        path: "jobDetails/:jobId",
-                        element: <AdminJobDetails />,
-                    },
-
-                    {
-                        path: "jobs",
-                        element: <AdminJobs />,
-                    },
-
-                    {
-                        path: "my_cv",
-                        element: <Cv />,
-                    },
-                    {
-                        path: "orders",
-                        // element: <h1> orders page</h1>,
-                    },
-                    {
-                        path: "signup",
-                        element: <Signup />,
-                    },
-
-                    {
-                        path: "login",
-                        element: <Login />,
-                    },
-
-                    {
-                        path: "payment/success",
-                        // element: <h2>Payment success</h2>,
-                    },
-                ],
+            {
+                path: "login",
+                element: <Login />,
+            },
+            
+            {
+                path: "edit-profile",
+                element: <EmployerEditProfile />,
             },
         ],
     },
+
+
+    
+    {
+        // element: <ProtectedRoute />,
+        path: "admin",
+        element: <AdminLayout />,
+
+        children: [
+
+            {
+                path: "",
+                element: <AdminLogin />,
+            },
+            {
+                path: "user-list",
+                element: <Users />
+            },
+            {
+                path: "login",
+                element: <AdminLogin />
+            },
+
+
+            
+            {
+                path: "about",
+                element: <Profile />
+            },
+
+
+             
+            {
+                path: "logout",
+                element: <MainLogout />
+            },
+
+            {
+                path: "applications",
+                element: <Application />
+            },
+
+
+            {
+                path: "userDetails/:UserId",
+                element: <UserDetails />
+            },
+
+
+            {
+                path: "users-List",
+                element: <UserList />
+            },
+
+
+            {
+                path: "appDetails/:appId",
+                element: <AppDetails />
+            },
+
+            {
+                path: "courses",
+                element: <Course />,
+            },
+
+            {
+                path: "jobDetails/:jobId",
+                element: <AdminJobDetails />,
+            },
+
+            {
+                path: "jobs",
+                element: <AdminJobs />,
+            },
+
+            {
+                path: "my_cv",
+                element: <Cv />,
+            },
+            {
+                path: "orders",
+                // element: <h1> orders page</h1>,
+            },
+            {
+                path: "signup",
+                element: <Signup />,
+            },
+
+            {
+                path: "login",
+                element: <Login />,
+            },
+
+            {
+                path: "payment/success",
+                // element: <h2>Payment success</h2>,
+            },
+        ],
+    },
+
+
+
+
+
 ]);
 

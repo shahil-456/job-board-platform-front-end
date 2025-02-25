@@ -2,27 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../components/user/Header";
 import { Footer } from "../components/user/Footer";
 import { Outlet, useLocation } from "react-router-dom";
-import { AdminHeader } from "../components/user/AdminHeader";
+import { AdminHeader } from "../components/admin/AdminHeader";
+
+
 import { axiosInstance } from "../config/axiosInstance";
 import { useSelector, useDispatch } from "react-redux";
-import { clearUser, saveUser } from "../redux/features/adminSlice";
+import { clearAdmin, saveAdmin } from "../redux/features/adminSlice";
 
-export const UserLayout = () => {
-    const { isUserAuth,userData } = useSelector((state) => state.user);
 
-    
+
+export const AdminLayout = () => {
+    const { isAdminAuth,adminData } = useSelector((state) => state.admin);
+
     const dispatch = useDispatch()
     const location = useLocation()
 
-    console.log("isUserAuth====", isUserAuth);
 
-    const checkUser = async () => {
+    
+      const checkAdmin = async () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
-                url: "/user/check-user",
+                url: "/admin/check-admin",
             });
-            dispatch(saveUser())
+            dispatch(saveAdmin())
         } catch (error) {
             dispatch(clearUser())
             console.log(error);
@@ -30,13 +33,16 @@ export const UserLayout = () => {
     };
 
 
+   
     useEffect(() => {
-        checkUser();
+        checkAdmin();
+
+
     }, [location.pathname]);
 
     return (
         <div>
-            {isUserAuth ? <UserHeader /> : <Header />}
+            { isAdminAuth ? <AdminHeader /> : <Header />}
 
             <div className="min-h-96">
                 <Outlet />

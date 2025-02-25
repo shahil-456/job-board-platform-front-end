@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 export const Profile = () => {
   const navigate = useNavigate();
 
+
+  
+
     const [profileData, isLoading, error] = useFetch("/user/profile");
 
     const handleLogOut = async () => {
@@ -30,6 +33,8 @@ export const Profile = () => {
     };
 
 
+    
+  
     return (
       
 <div className="flex flex-col items-center justify-start px-20 py-16">
