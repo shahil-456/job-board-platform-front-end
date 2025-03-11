@@ -11,7 +11,7 @@ const notify = () => toast('Here is your toast.');
 function App() {
     return (
     <>
-    <RouterProvider router={router} />;
+    <RouterProvider router={router} />
     <Toaster />
     </>
    )
