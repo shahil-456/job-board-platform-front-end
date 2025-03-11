@@ -50,6 +50,8 @@ import { UserList } from "../pages/employer/UsersList";
 import { UserDetails } from "../pages/employer/UserDetails";
 
 import { Application } from "../pages/employer/Application";
+import { MyJobs } from "../pages/employer/MyJobs";
+
 import { AdminLogin } from "../pages/shared/AdminLogin";
 
 
@@ -136,6 +138,14 @@ export const router = createBrowserRouter([
                         path: "orders",
                         // element: <h1> orders page</h1>,
                     },
+
+
+                    {
+                        path: "my_jobs",
+                        element: <MyJobs />
+                    },
+
+
                     {
                         path: "signup",
                         element: <Signup />,

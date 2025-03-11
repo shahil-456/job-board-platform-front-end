@@ -13,6 +13,8 @@ export const AppDetails = () => {
     const { appId } = useParams();
     const navigate = useNavigate();
 
+    const [isApplied, setIsApplied] = useState(false);
+
 
     console.log("params===", appId);
 
@@ -27,7 +29,7 @@ export const AppDetails = () => {
         try {
             const response = await axiosInstance({
                 method: "GET",
-                url: `/job/apply_job/${appId}`,
+                url: `/job/accept_job/${appId}`,
             });
             console.log("response====", response);
             // setJobDetails(response?.data?.data);
@@ -96,8 +98,14 @@ export const AppDetails = () => {
                 onClick={applyJob}
                 className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition"
             >
-                { "Accept"}
+
+
+                {JobDetails?.accept ? 'Accepted' : 'Accept Now'}
+
             </button>
+
+
+
 
 
     </div>

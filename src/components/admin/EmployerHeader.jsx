@@ -19,8 +19,8 @@ export const EmployerHeader = () => {
                 <div className="text-3xl font-bold">Logo</div>
             </Link>
             <nav className="flex gap-16 items-center font-semibold">
-                <Link to={"employer/profile"}>Profile</Link>
-                <Link to={"employer/jobs"}>Jobs</Link>
+                <Link to={"/employer/profile"}>Profile</Link>
+                <Link to={"/employer/jobs"}>Jobs</Link>
                 <Link to={"/employer/add-job"}>Add Job</Link>
                 <Link to={"/employer/users-list"}>Users</Link>
                 <Link to={"/employer/application"}>Applications</Link>
