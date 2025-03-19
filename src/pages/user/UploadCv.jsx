@@ -103,7 +103,7 @@ export const Cv = () => {
 
           {/* Name */}
           <div className="mb-4">
-            <label className="block text-sm font-medium ">Skills</label>
+            <label className="block text-sm font-medium ">Experience</label>
             <input
               type="text"
               name="skill"

@@ -43,8 +43,13 @@ import { Jobs ,AdminJobs} from "../pages/user/Jobs";
 import { Cv } from "../pages/user/UploadCv";
 import { AddJob } from "../pages/employer/AddJob";
 import { Users } from "../pages/employer/Users";
+
+
 import { EmpLogin } from "../pages/shared/EmployerLogin";
 import { UserList } from "../pages/employer/UsersList";
+
+import { EmployerList } from "../pages/employer/EmployerList";
+
 
 
 import { UserDetails } from "../pages/employer/UserDetails";
@@ -280,6 +285,11 @@ export const router = createBrowserRouter([
             {
                 path: "user-list",
                 element: <Users />
+            },
+
+            {
+                path: "employers-list",
+                element: <EmployerList />
             },
             {
                 path: "login",

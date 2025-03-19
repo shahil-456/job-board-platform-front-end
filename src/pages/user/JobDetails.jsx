@@ -110,7 +110,7 @@ export const JobDetails = () => {
       </div>
 
       <div className="mt-2">
-        <p className="text-lg font-semibold ">Skills Required:</p>
+        <p className="text-lg font-semibold ">Experience:</p>
         <p className="text-gray-600">{JobDetails?.skills}</p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { CircleUser } from "lucide-react";
-import { ShoppingBag } from "lucide-react";
+import { Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 // import { DarkMode } from "../shared/DarkMode";
 import { useFetch } from "../../hooks/useFetch";
@@ -23,6 +23,8 @@ export const AdminHeader = () => {
                 <Link to={"/admin/about"}>About</Link>
                 <Link to={"/admin/jobs"}>Jobs</Link>
                 <Link to={"/admin/users-list"}>Users</Link>
+                <Link to={"/admin/employers-list"}>Employers</Link>
+
                 <Link to={"/admin/applications"}>Applications</Link>
 
                 <Link to={"/admin/logout"}>Logout</Link>
@@ -31,14 +33,10 @@ export const AdminHeader = () => {
 
             <div className="flex gap-14 items-center ">
                 {/* <DarkMode /> */}
-                <Link to={'/user/my_cv'}>
-                    <ShoppingBag />
-                </Link>
+               
                 <DarkMode />
 
-                <Link to={"/user/profile"}>
-                    <CircleUser />
-                </Link>
+             
             </div>
         </div>
     );

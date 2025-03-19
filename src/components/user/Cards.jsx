@@ -14,7 +14,7 @@ export const CourseCards = ({ job }) => {
             <div className="card-body">
                 <h2 className="card-title">{job?.title} </h2>
                 <p>Company : {job?.company}  </p>
-                <p>Skills : {job?.skills}  </p>
+                <p>Experience : {job?.skills}  </p>
 
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary" onClick={() => navigate(`../jobDetails/${job?._id}`)}>

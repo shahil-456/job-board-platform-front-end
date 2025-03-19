@@ -46,6 +46,11 @@ const handleNavigation = () => {
                             {" "}
                             <li>Employer</li>{" "}
                         </Link>
+
+                        <Link to={"/admin"}>
+                            {" "}
+                            <li>Admin</li>{" "}
+                        </Link>
                         <Link to={"/jobs"}>
                             {" "}
                             <li>Home</li>{" "}

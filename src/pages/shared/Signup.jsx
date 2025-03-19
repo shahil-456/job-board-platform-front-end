@@ -11,19 +11,19 @@ export const Signup = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosInstance({
-                method: "POST",
-                url: "/user/signup",
-                data: data,
-            });
+            const response = await axiosInstance.post("/user/signup", data);
             console.log("response====", response);
-            toast.success('User Signup Success');
-
+            toast.success("User Signup Success");
+    
             navigate("/user/profile");
         } catch (error) {
-            console.log(error);
+            console.error("Signup Error:", error);
+    
+            // Ensure error message is shown
+            toast.error(error.response?.data?.message || error.message || "Signup Failed");
         }
     };
+    
 
     return (
         <div className="hero bg-base-200 min-h-screen">
