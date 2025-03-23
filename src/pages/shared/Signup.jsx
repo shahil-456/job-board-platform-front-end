@@ -101,7 +101,7 @@ export const EmpSignup = () => {
             console.log("response====", response);
             toast.success('Employer Signup Success');
 
-            navigate("/employer");
+            navigate("/employer/profile");
         } catch (error) {
             console.log(error);
         }
