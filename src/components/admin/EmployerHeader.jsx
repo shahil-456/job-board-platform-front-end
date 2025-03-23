@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 // import { DarkMode } from "../shared/DarkMode";
 import { useFetch } from "../../hooks/useFetch";
 import { DarkMode } from "../shared/DarkMode";
-
+import { Coins } from 'lucide-react';
 
 
 export const EmployerHeader = () => {
 
-  const [profileData, isLoading, error] = useFetch("/user/profile");
+  const [profileData, isLoading, error] = useFetch("/mentor/profile");
 
 
     return (
@@ -31,9 +31,17 @@ export const EmployerHeader = () => {
 
             <div className="flex gap-14 items-center ">
                 {/* <DarkMode /> */}
-                <Link to={'/employer/my_cv'}>
-                <Briefcase />
-                </Link>
+
+
+            <Link to={'/employer/add_token'} className="relative">
+                <Coins className="w-6 h-6 text-gray-700" />
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+
+                {profileData?.token}
+
+                </span>
+            </Link>
+
                 <DarkMode />
 
                 <Link to={"/employer/profile"}>

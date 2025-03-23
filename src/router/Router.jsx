@@ -35,6 +35,8 @@ import { EditProfile } from "../pages/user/EditProfile";
 
 import { EmployerProfile } from "../pages/employer/Profile";
 import { EmployerEditProfile } from "../pages/employer/EditProfile";
+import { Cart } from "../pages/employer/Cart";
+import { SuccessPage } from "../pages/employer/Success";
 
 
 
@@ -190,8 +192,18 @@ export const router = createBrowserRouter([
                 element: <Users />
             },
             {
+                path: "payment/success",
+                element: <SuccessPage/>,
+            },
+            {
                 path: "login",
                 element: <EmpLogin />
+            },
+
+
+            {
+                path: "add_token",
+                element: <Cart />
             },
 
 

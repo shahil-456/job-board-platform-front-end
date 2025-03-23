@@ -4,6 +4,7 @@ import { axiosInstance } from "../../config/axiosInstance";
 import { useFetch } from "../../hooks/useFetch";
 import { CourseSkelton } from "../../components/shared/Skeltons";
 import toast from 'react-hot-toast';
+import { Link } from "react-router-dom";
 
 
 
@@ -56,6 +57,8 @@ export const AddJob = () => {
             toast.success('Job Created Success');
 
       console.log("Job Added successfully", response.data);
+      window.location.reload();
+
     } catch (error) {
       console.log("Error Adding JOb:", error);
     }
@@ -71,10 +74,21 @@ export const AddJob = () => {
         <form onSubmit={handleSubmit} className="border p-6 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">Add Job</h1>
 
+          <div className="flex items-center justify-between mb-4">
+  <h3 className="text-green-500">Token - {jobData?.token}</h3>
+  <Link
+    to="../add_token"
+    className="bg-blue-500 text-white px-3 py-1 rounded-md text-sm"
+  >
+    Add Token
+  </Link>
+</div>
+
+
 
           <div className="mb-4">
   <label className="block text-sm font-medium ">Title</label>
-  <input
+  <input required
     type="text"
     name="title"
     value={formData.title}
@@ -85,7 +99,7 @@ export const AddJob = () => {
 
 <div className="mb-4">
   <label className="block text-sm font-medium ">Company</label>
-  <input
+  <input required
     type="text"
     name="company"
     value={formData.company}
@@ -96,7 +110,7 @@ export const AddJob = () => {
 
 <div className="mb-4">
   <label className="block text-sm font-medium ">Required Skills</label>
-  <input
+  <input required
     type="text"
     name="skills"
     value={formData.skills}
@@ -118,7 +132,7 @@ export const AddJob = () => {
 
 <div className="mb-4">
   <label className="block text-sm font-medium ">Contact</label>
-  <input
+  <input required
     type="text"
     name="contact"
     value={formData.contact}
@@ -129,7 +143,7 @@ export const AddJob = () => {
 
 <div className="mb-4">
   <label className="block text-sm font-medium ">Image</label>
-  <input
+  <input required
     type="file"
     onChange={handleImageChange}
 
@@ -140,12 +154,18 @@ export const AddJob = () => {
         
 
           {/* Submit Button */}
+
           <button
-            type="submit"
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Add Job
-          </button>
+  type="submit"
+  className={`w-full px-4 py-2 rounded-md ${
+    jobData?.token > 0 ? "bg-blue-500 text-white" : "bg-gray-400 text-gray-700 cursor-not-allowed"
+  }`}
+  disabled={!(jobData?.token > 0)}
+>
+  Add Job
+</button>
+
+
         </form>
       )}
     </div>
